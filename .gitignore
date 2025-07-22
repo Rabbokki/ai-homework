@@ -1,0 +1,25 @@
+# Node
+frontend/node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# 환경변수
+.env
+
+# Docker Volume (만약 바인딩한 경우)
+mongo-data/
+*.log
+*.pid
+*.pid.lock
+docker-compose.override.yml
+data/
+db/
+mongod.lock
+
+# VSCode
+.vscode/
+
+# Python virtual environment
+venv/
