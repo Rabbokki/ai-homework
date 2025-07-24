@@ -5,12 +5,12 @@ function App() {
   const [count, setCount] = useState(0);
 
   const fetchCount = async () => {
-    const res = await axios.get('http://localhost:5000/count');
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/count`);
     setCount(res.data.count);
   };
 
   const updateCount = async (delta) => {
-    await axios.post('http://localhost:5000/count', { delta });
+    await axios.post(`${process.env.REACT_APP_API_URL}/count`, { delta });
     fetchCount();
   };
 
