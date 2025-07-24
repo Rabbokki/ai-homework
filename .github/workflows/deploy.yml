@@ -24,14 +24,14 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ai-backend:latest
+          tags: joolegend/ai-backend:latest
 
       - name: Build and Push Frontend
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ai-frontend:latest
+          tags: joolegend/ai-frontend:latest
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1.0.0
@@ -40,8 +40,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
-            cd ~/your-project-folder
-            docker pull ${{ secrets.DOCKER_USERNAME }}/ai-backend:latest
-            docker pull ${{ secrets.DOCKER_USERNAME }}/ai-frontend:latest
+            cd ~/ai-homework
+            docker pull joolegend/ai-backend:latest
+            docker pull joolegend/ai-frontend:latest
             docker-compose down
             docker-compose up -d
