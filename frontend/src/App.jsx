@@ -4,13 +4,18 @@ import axios from 'axios';
 function App() {
   const [count, setCount] = useState(0);
 
+  console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
+
   const fetchCount = async () => {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}/count`);
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://15.165.160.116:5000';
+    console.log('Fetching from:', apiUrl);
+    const res = await axios.get(`${apiUrl}/count`);
     setCount(res.data.count);
   };
 
   const updateCount = async (delta) => {
-    await axios.post(`${process.env.REACT_APP_API_URL}/count`, { delta });
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://15.165.160.116:5000';
+    await axios.post(`${apiUrl}/count`, { delta });
     fetchCount();
   };
 
