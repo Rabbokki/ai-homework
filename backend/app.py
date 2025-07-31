@@ -40,3 +40,5 @@ def update_count(req: CountRequest):
     new_count = counter["count"] + req.delta
     counter_col.update_one({}, {"$set": {"count": new_count}})
     return {"count": new_count}
+
+print("test")
